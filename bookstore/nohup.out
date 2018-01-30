@@ -1,0 +1,950 @@
+[2018-01-30 12:00:31 +0800] [6780] [INFO] Starting gunicorn 19.7.1
+[2018-01-30 12:00:31 +0800] [6780] [INFO] Listening at: http://127.0.0.1:8080 (6780)
+[2018-01-30 12:00:31 +0800] [6780] [INFO] Using worker: sync
+[2018-01-30 12:00:31 +0800] [6783] [INFO] Booting worker with pid: 6783
+[2018-01-30 12:00:31 +0800] [6785] [INFO] Booting worker with pid: 6785
+[2018-01-30 12:00:31 +0800] [6786] [INFO] Booting worker with pid: 6786
+[2018-01-30 12:00:32 +0800] [6783] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:00:32 +0800] [6783] [INFO] Worker exiting (pid: 6783)
+[2018-01-30 12:00:32 +0800] [6785] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:00:32 +0800] [6785] [INFO] Worker exiting (pid: 6785)
+[2018-01-30 12:00:33 +0800] [6786] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:00:33 +0800] [6786] [INFO] Worker exiting (pid: 6786)
+[2018-01-30 12:00:33 +0800] [6780] [INFO] Shutting down: Master
+[2018-01-30 12:00:33 +0800] [6780] [INFO] Reason: Worker failed to boot.
+[2018-01-30 12:01:38 +0800] [6792] [INFO] Starting gunicorn 19.7.1
+[2018-01-30 12:01:38 +0800] [6792] [INFO] Listening at: http://127.0.0.1:8080 (6792)
+[2018-01-30 12:01:38 +0800] [6792] [INFO] Using worker: sync
+[2018-01-30 12:01:38 +0800] [6795] [INFO] Booting worker with pid: 6795
+[2018-01-30 12:01:38 +0800] [6796] [INFO] Booting worker with pid: 6796
+[2018-01-30 12:01:38 +0800] [6797] [INFO] Booting worker with pid: 6797
+[2018-01-30 12:01:39 +0800] [6795] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:01:39 +0800] [6795] [INFO] Worker exiting (pid: 6795)
+[2018-01-30 12:01:39 +0800] [6796] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:01:39 +0800] [6796] [INFO] Worker exiting (pid: 6796)
+[2018-01-30 12:01:39 +0800] [6797] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:01:39 +0800] [6797] [INFO] Worker exiting (pid: 6797)
+[2018-01-30 12:01:40 +0800] [6792] [INFO] Shutting down: Master
+[2018-01-30 12:01:40 +0800] [6792] [INFO] Reason: Worker failed to boot.
+[2018-01-30 12:02:38 +0800] [6803] [INFO] Starting gunicorn 19.7.1
+[2018-01-30 12:02:38 +0800] [6803] [INFO] Listening at: http://127.0.0.1:8080 (6803)
+[2018-01-30 12:02:38 +0800] [6803] [INFO] Using worker: sync
+[2018-01-30 12:02:38 +0800] [6806] [INFO] Booting worker with pid: 6806
+[2018-01-30 12:02:38 +0800] [6807] [INFO] Booting worker with pid: 6807
+[2018-01-30 12:02:38 +0800] [6809] [INFO] Booting worker with pid: 6809
+[2018-01-30 12:02:39 +0800] [6806] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:02:39 +0800] [6806] [INFO] Worker exiting (pid: 6806)
+[2018-01-30 12:02:39 +0800] [6807] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:02:39 +0800] [6807] [INFO] Worker exiting (pid: 6807)
+[2018-01-30 12:02:39 +0800] [6809] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:02:39 +0800] [6809] [INFO] Worker exiting (pid: 6809)
+[2018-01-30 12:02:39 +0800] [6803] [INFO] Shutting down: Master
+[2018-01-30 12:02:39 +0800] [6803] [INFO] Reason: Worker failed to boot.
+[2018-01-30 12:04:01 +0800] [6816] [INFO] Starting gunicorn 19.7.1
+[2018-01-30 12:04:01 +0800] [6816] [INFO] Listening at: http://127.0.0.1:8080 (6816)
+[2018-01-30 12:04:01 +0800] [6816] [INFO] Using worker: sync
+[2018-01-30 12:04:01 +0800] [6819] [INFO] Booting worker with pid: 6819
+[2018-01-30 12:04:01 +0800] [6820] [INFO] Booting worker with pid: 6820
+[2018-01-30 12:04:01 +0800] [6822] [INFO] Booting worker with pid: 6822
+[2018-01-30 12:04:02 +0800] [6819] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:04:02 +0800] [6819] [INFO] Worker exiting (pid: 6819)
+[2018-01-30 12:04:02 +0800] [6820] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:04:02 +0800] [6820] [INFO] Worker exiting (pid: 6820)
+[2018-01-30 12:04:02 +0800] [6822] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:04:02 +0800] [6822] [INFO] Worker exiting (pid: 6822)
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 209, in run
+    self.sleep()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 359, in sleep
+    ready = select.select([self.PIPE[0]], [], [], 1.0)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 244, in handle_chld
+    self.reap_workers()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 524, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/bin/gunicorn", line 11, in <module>
+    sys.exit(run())
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 74, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 203, in run
+    super(Application, self).run()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 72, in run
+    Arbiter(self).run()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 231, in run
+    self.halt(reason=inst.reason, exit_status=inst.exit_status)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 344, in halt
+    self.stop()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 393, in stop
+    time.sleep(0.1)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 244, in handle_chld
+    self.reap_workers()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 524, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+[2018-01-30 12:04:15 +0800] [6827] [INFO] Starting gunicorn 19.7.1
+[2018-01-30 12:04:15 +0800] [6827] [INFO] Listening at: http://127.0.0.1:8080 (6827)
+[2018-01-30 12:04:15 +0800] [6827] [INFO] Using worker: sync
+[2018-01-30 12:04:15 +0800] [6830] [INFO] Booting worker with pid: 6830
+[2018-01-30 12:04:15 +0800] [6832] [INFO] Booting worker with pid: 6832
+[2018-01-30 12:04:15 +0800] [6833] [INFO] Booting worker with pid: 6833
+[2018-01-30 12:04:16 +0800] [6830] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:04:16 +0800] [6830] [INFO] Worker exiting (pid: 6830)
+[2018-01-30 12:04:16 +0800] [6832] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:04:16 +0800] [6832] [INFO] Worker exiting (pid: 6832)
+[2018-01-30 12:04:17 +0800] [6833] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:04:17 +0800] [6833] [INFO] Worker exiting (pid: 6833)
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 209, in run
+    self.sleep()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 359, in sleep
+    ready = select.select([self.PIPE[0]], [], [], 1.0)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 244, in handle_chld
+    self.reap_workers()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 524, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/bin/gunicorn", line 11, in <module>
+    sys.exit(run())
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 74, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 203, in run
+    super(Application, self).run()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 72, in run
+    Arbiter(self).run()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 231, in run
+    self.halt(reason=inst.reason, exit_status=inst.exit_status)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 344, in halt
+    self.stop()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 393, in stop
+    time.sleep(0.1)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 244, in handle_chld
+    self.reap_workers()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 524, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+[2018-01-30 12:04:31 +0800] [6836] [INFO] Starting gunicorn 19.7.1
+[2018-01-30 12:04:31 +0800] [6836] [INFO] Listening at: http://127.0.0.1:8080 (6836)
+[2018-01-30 12:04:31 +0800] [6836] [INFO] Using worker: sync
+[2018-01-30 12:04:31 +0800] [6839] [INFO] Booting worker with pid: 6839
+[2018-01-30 12:04:31 +0800] [6840] [INFO] Booting worker with pid: 6840
+[2018-01-30 12:04:31 +0800] [6841] [INFO] Booting worker with pid: 6841
+[2018-01-30 12:04:32 +0800] [6839] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:04:32 +0800] [6839] [INFO] Worker exiting (pid: 6839)
+[2018-01-30 12:04:32 +0800] [6840] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:04:32 +0800] [6840] [INFO] Worker exiting (pid: 6840)
+[2018-01-30 12:04:32 +0800] [6841] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:04:32 +0800] [6841] [INFO] Worker exiting (pid: 6841)
+[2018-01-30 12:04:33 +0800] [6836] [INFO] Shutting down: Master
+[2018-01-30 12:04:33 +0800] [6836] [INFO] Reason: Worker failed to boot.
+[2018-01-30 12:04:54 +0800] [6845] [INFO] Starting gunicorn 19.7.1
+[2018-01-30 12:04:54 +0800] [6845] [INFO] Listening at: http://127.0.0.1:8080 (6845)
+[2018-01-30 12:04:54 +0800] [6845] [INFO] Using worker: sync
+[2018-01-30 12:04:54 +0800] [6848] [INFO] Booting worker with pid: 6848
+[2018-01-30 12:04:54 +0800] [6850] [INFO] Booting worker with pid: 6850
+[2018-01-30 12:04:54 +0800] [6851] [INFO] Booting worker with pid: 6851
+[2018-01-30 12:04:55 +0800] [6848] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:04:55 +0800] [6848] [INFO] Worker exiting (pid: 6848)
+[2018-01-30 12:04:55 +0800] [6850] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:04:55 +0800] [6850] [INFO] Worker exiting (pid: 6850)
+[2018-01-30 12:04:55 +0800] [6851] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:04:55 +0800] [6851] [INFO] Worker exiting (pid: 6851)
+[2018-01-30 12:04:55 +0800] [6845] [INFO] Shutting down: Master
+[2018-01-30 12:04:55 +0800] [6845] [INFO] Reason: Worker failed to boot.
+[2018-01-30 12:05:45 +0800] [6858] [INFO] Starting gunicorn 19.7.1
+[2018-01-30 12:05:45 +0800] [6858] [INFO] Listening at: http://127.0.0.1:8080 (6858)
+[2018-01-30 12:05:45 +0800] [6858] [INFO] Using worker: sync
+[2018-01-30 12:05:45 +0800] [6861] [INFO] Booting worker with pid: 6861
+[2018-01-30 12:05:45 +0800] [6862] [INFO] Booting worker with pid: 6862
+[2018-01-30 12:05:45 +0800] [6864] [INFO] Booting worker with pid: 6864
+[2018-01-30 12:05:46 +0800] [6862] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:05:46 +0800] [6862] [INFO] Worker exiting (pid: 6862)
+[2018-01-30 12:05:46 +0800] [6861] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:05:46 +0800] [6861] [INFO] Worker exiting (pid: 6861)
+[2018-01-30 12:05:46 +0800] [6864] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:05:46 +0800] [6864] [INFO] Worker exiting (pid: 6864)
+[2018-01-30 12:05:46 +0800] [6858] [INFO] Shutting down: Master
+[2018-01-30 12:05:46 +0800] [6858] [INFO] Reason: Worker failed to boot.
+[2018-01-30 12:07:33 +0800] [6942] [INFO] Starting gunicorn 19.7.1
+[2018-01-30 12:07:33 +0800] [6942] [INFO] Listening at: http://127.0.0.1:8080 (6942)
+[2018-01-30 12:07:33 +0800] [6942] [INFO] Using worker: sync
+[2018-01-30 12:07:33 +0800] [6945] [INFO] Booting worker with pid: 6945
+[2018-01-30 12:07:33 +0800] [6946] [INFO] Booting worker with pid: 6946
+[2018-01-30 12:07:33 +0800] [6947] [INFO] Booting worker with pid: 6947
+[2018-01-30 12:07:34 +0800] [6945] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:07:34 +0800] [6945] [INFO] Worker exiting (pid: 6945)
+[2018-01-30 12:07:34 +0800] [6946] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:07:34 +0800] [6946] [INFO] Worker exiting (pid: 6946)
+[2018-01-30 12:07:34 +0800] [6947] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/arbiter.py", line 578, in spawn_worker
+    worker.init_process()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 126, in init_process
+    self.load_wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/workers/base.py", line 135, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/gunicorn/util.py", line 352, in import_app
+    __import__(module)
+  File "/home/atguigu/wx/Django/bookstore/bookstore/wsgi.py", line 16, in <module>
+    application = get_wsgi_application()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/core/wsgi.py", line 14, in get_wsgi_application
+    django.setup()
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/__init__.py", line 18, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/registry.py", line 85, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/site-packages/django/apps/config.py", line 86, in create
+    module = import_module(entry)
+  File "/home/atguigu/Envs/py3/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+ImportError: No module named 'orderhaystack'
+[2018-01-30 12:07:34 +0800] [6947] [INFO] Worker exiting (pid: 6947)
+[2018-01-30 12:07:35 +0800] [6942] [INFO] Shutting down: Master
+[2018-01-30 12:07:35 +0800] [6942] [INFO] Reason: Worker failed to boot.
+[2018-01-30 12:08:35 +0800] [6993] [INFO] Starting gunicorn 19.7.1
+[2018-01-30 12:08:35 +0800] [6993] [INFO] Listening at: http://127.0.0.1:8080 (6993)
+[2018-01-30 12:08:35 +0800] [6993] [INFO] Using worker: sync
+[2018-01-30 12:08:35 +0800] [6996] [INFO] Booting worker with pid: 6996
+[2018-01-30 12:08:35 +0800] [6997] [INFO] Booting worker with pid: 6997
+[2018-01-30 12:08:35 +0800] [6998] [INFO] Booting worker with pid: 6998
