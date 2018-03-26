@@ -25,7 +25,7 @@ SECRET_KEY = 'd$zfx21n=7!!u#h4(xu(=0tqrhl4s=jnnf859$_)@7@v5szy-q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -43,6 +43,8 @@ INSTALLED_APPS = (
     'cart',#购物车模块
     'order',#订单页面模块
     'haystack',#全文检索应用
+    'users.templatetags.filters', # 过滤器功能
+    'comments', # 评论模块
 )
 
 MIDDLEWARE_CLASSES = (
@@ -86,8 +88,8 @@ DATABASES = {
         'NAME': 'bookstore',
         'HOST': 'localhost',
         'PORT': 3306,
-        'USER': 'root',
-        'PASSWORD': 'yzwwxyhf20150322'
+        'USER': 'atguigu',
+        'PASSWORD': '123456'
     }
 }
 
@@ -145,9 +147,9 @@ EMAIL_PORT = 25
 #发送邮件的邮箱
 EMAIL_HOST_USER = '13903808761@163.com'
 #在邮箱中设置的客户端授权密码
-EMAIL_HOST_PASSWORD = 'yzwwxyhf20150322'
+EMAIL_HOST_PASSWORD = 'yzwwx124207'
 #收件人看到的发件人
-EMAIL_FROM = 'shangguigu<13903808761@163.com>'
+EMAIL_FROM = 'wangxu<13903808761@163.com>'
 
 
 
@@ -165,6 +167,7 @@ HAYSTACK_CONNECTIONS = {
 #当添加,修改,删除数据时,自动生成索引
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 6 #指定搜索结果每页的条数
+
 
 
 
