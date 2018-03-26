@@ -86,8 +86,8 @@ DATABASES = {
         'NAME': 'bookstore',
         'HOST': 'localhost',
         'PORT': 3306,
-        'USER': 'atguigu',
-        'PASSWORD': '123456'
+        'USER': 'root',
+        'PASSWORD': 'yzwwxyhf20150322'
     }
 }
 

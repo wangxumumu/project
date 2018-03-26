@@ -8,24 +8,41 @@
     //点击登陆之后执行此代码
     $(function (){
         $('#btnLogin').click(function () {
+            console.log('1111111111')
             //获取用户名和密码
             username = $('#username').val()
             password = $('#pwd').val()
+            // 使用缓存使用的
             csrf = $("input[name='csrfmiddlewaretoken']").val()
+            // 记住密码的勾选框
             remember = $("input[name='remember']").prop('checked')
+            console.log(remember)
+            // 验证码
+            vc = $('input[name="vc"]').val()
+            console.log(vc)
             // 发送ajax请求
-            params = {'username':username,'password':password,
-                    'csrfmiddlewaretoken':csrf,'remember':remember}
+            params = {
+                'username':username,
+                'password':password,
+                'csrfmiddlewaretoken':csrf,
+                'remember':remember,
+                'verifycode': vc,
+            }
+            // jequery的写法,params 是ajax的请求，获取到
             $.post('/user/login_check/',params,function (data) {
-                //用户名密码错误{'res':0}
+                //用户名或密码错误{'res':0}
                 //登陆成功{'res':1}
                 if (data.res == 0){
                     $('#username').next().html('用户名或者密码错误').show()
                 }
                 else if (data.res == 1){
+                    console.log('data',data)
                     //跳转页面
                     location.href = data.next_url
-                }else
+                }else if(data.res == 3){
+                     $('#username').next().html('验证码不能为空').show()
+                }
+                else
                 {
                     $('#username').next().html('输入不能为空').show()
                 }
@@ -41,7 +58,7 @@
 {% block body %}
 
 	<div class="login_top clearfix">
-		<a href="index.html" class="login_logo"><img src="{% static 'images/logo.png' %}" style="width: 160px; height: 53px;"></a>
+		<a href="{% url 'books:index' %}" class="login_logo"><img src="{% static 'images/logo.png' %}" style="width: 160px; height: 53px;"></a>
 	</div>
 
 	<div class="login_form_bg">
@@ -60,15 +77,32 @@
 						<div class="user_error">输入错误</div>
 						<input type="password" id="pwd" class="pass_input" placeholder="请输入密码">
 						<div class="pwd_error">输入错误</div>
+
 						<div class="more_input clearfix">
 							<input type="checkbox" name="remember" {{ checked }}>
 							<label>记住用户名</label>
 							<a href="#">忘记密码</a>
 						</div>
 						<input type="button" id="btnLogin" value="登录" class="input_submit">
+
+
+                        {# 登陆验证码功能时使用 #}
+                        <div style="top: 100px; position: absolute;">
+                            <input type="text" id="vc" name="vc" style="width: 190px;">
+                            <img id="verifycode" src="{% url  'user:verifycode' %}" onclick="refresh_check_code(this)">
+                        </div>
 				</div>
 			</div>
 		</div>
 	</div>
 
 {% endblock body %}
+
+{% block bottomfiles %}
+    <script>
+        function refresh_check_code(ths) {
+            ths.src += '?';
+        }
+    </script>
+{% endblock bottomfiles %}
+

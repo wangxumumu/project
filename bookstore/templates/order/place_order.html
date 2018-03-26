@@ -6,13 +6,18 @@
 
 {% block search_bar %}
     <div class="search_bar clearfix">
-		<a href="index.html" class="logo fl"><img src="{% static 'images/logo.png' %}" style="width: 160px; height: 53px;"></a>
+		<a href="{% url 'books:index' %}" class="logo fl"><img src="{% static 'images/logo.png' %}" style="width: 160px; height: 53px;"></a>
 		<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;提交订单</div>
-		<div class="search_con fr">
-			<input type="text" class="input_text fl" name="" placeholder="搜索商品">
-			<input type="button" class="input_btn fr" name="" value="搜索">
-		</div>
-	</div>
+
+        <div class="search_con fr">
+            <form method="get" action="/search/" target="_blank">
+            {% csrf_token %}
+                <input type="text" class="input_text fl" name="q" placeholder="搜索商品">
+                <input type="submit" class="input_btn fr" name="" value="搜索">
+            </form>
+        </div>
+
+    </div>
 
 {% endblock search_bar %}
 {% block body %}
@@ -97,7 +102,6 @@
 {% block bottomfiles %}
     <script type="text/javascript">
         $('#order_btn').click(function() {
-            console.log('11111111')
             // 获取收货地址的id, 支付方式，用户购买的商品id
             addr_id = $('input[name="addr_id"]').val()
             pay_method = $('input[name="pay_style"]:checked').val()
@@ -111,7 +115,6 @@
                 'books_ids': books_ids,
                 'csrfmiddlewaretoken': csrf
             }
-            console.log('params',params)
             $.post('/order/commit/', params, function (data) {
                 console.log('data',data)
                 // 根据json进行处理

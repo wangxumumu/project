@@ -77,7 +77,6 @@ def cart_count(request):
 
 	for i in res_list:
 		res += int(i)
-
 	#返回结果
 	return JsonResponse({'res':res})
 

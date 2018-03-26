@@ -207,6 +207,7 @@ def order_commit(request):
 		#transaction - 事物
 		#savepoint_rollback 回滚到保存点
 		#操作数据哭出错，进行回滚操作(回滚到保存点)
+		print('e: ', e)
 		transaction.savepoint_rollback(sid)
 		return JsonResponse({'res':7,'errmsg':'服务器错误'})
 

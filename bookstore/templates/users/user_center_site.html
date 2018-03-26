@@ -1,15 +1,20 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% block title %}尚硅谷书店－收获地址{% endblock title %}
 {% block topfiles %}{% endblock topfiles %}
 
 
 {% block search_bar %}
     <div class="search_bar clearfix">
-        <a href="index.html" class="logo fl"><img src="{% static 'images/logo.png' %}" style="width: 160px; height: 53px;"></a>
-        <div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;用户中心</div>
+		<a href="{% url 'books:index' %}" class="logo fl"><img src="{% static 'images/logo.png' %}" style="width: 160px; height: 53px;"></a>
+		<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;用户中心</div>
+
         <div class="search_con fr">
-            <input type="text" class="input_text fl" name="" placeholder="搜索商品">
-            <input type="button" class="input_btn fr" name="" value="搜索">
+            <form method="get" action="/search/" target="_blank">
+            {% csrf_token %}
+                <input type="text" class="input_text fl" name="q" placeholder="搜索商品">
+                <input type="submit" class="input_btn fr" name="" value="搜索">
+            </form>
         </div>
     </div>
 {% endblock search_bar %}

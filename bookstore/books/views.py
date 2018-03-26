@@ -3,9 +3,12 @@ from books.models import Books
 from books.enums import *
 from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator
+from django_redis import get_redis_connection
+from django.views.decorators.cache import cache_page # 导入redis缓存
 
 # Create your views here.
 
+# @cache_page(60 * 15)
 def index(request):
 	#显示首页
 	#查询每个种类的３个新品信息和４个销量最好的商品信息
@@ -51,6 +54,20 @@ def detail(request,books_id):
 		return redirect(reverse('books:index'))
 	#新品推荐
 	books_li = Books.objects.get_books_by_type(type_id=books.type_id,limit=2,sort='new')
+
+	# TODO 用户登陆之后，才记录浏览记录
+	#每个用户浏览记录对应redis中的一条信息　格式:'history_用户id':[10,9,2,3,4]
+	#[9,10,2,3,4]
+	if request.session.has_key('islogin'):
+		#用户已登陆,记录浏览记录
+		con = get_redis_connection('default')#连接redis数据库
+		key = 'history_%d' % request.session.get('passport_id')
+		#先从redis列表中移除books.id
+		con.lrem(key, 0, books.id) # lrem()移除列表中的数据
+		con.lpush(key,books.id) #lpush()在key对应的list头部添加字符串元素
+		#保存用户最近浏览的５个商品
+		con.ltrim(key,0,4) # ltrim()剪裁数据,得到０－４的下标,默认下标从０开始
+
 	#定义上下文
 	context = {'books':books,'books_li':books_li}
 	#使用模板

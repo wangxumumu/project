@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect #用户提交表单时导入redirect(重导向)
 import re
-from users.models import Passport,Address
+from users.models import Passport,Address #导入用户模板中的表
 from django.core.urlresolvers import reverse #使用反向解析倒回到注册页面
 from django.http import JsonResponse,HttpResponse
 from utils.decorators import login_required #导入装饰器的模块
@@ -12,8 +12,8 @@ from itsdangerous import SignatureExpired
 from bookstore import settings #导入settings
 from django.core.mail import send_mail
 from users.tasks import send_active_email #异步发送邮箱需要导入的模块
-
-
+from django_redis import get_redis_connection # 导入redis数据库连接
+from books.models import Books
 
 # Create your views here.
 
@@ -49,9 +49,10 @@ def register_handle(request):
 
 	#给用户的邮箱发激活邮件
 	#实现同步
-	# send_mail('尚硅谷书城用户激活', '', settings.EMAIL_FROM, [email],html_message='<a href="http://127.0.0.1:8000/user/active/%s/">http://127.0.0.1:8000/user/active/</a>' % token)
+	send_mail('我的书城用户激活', '', settings.EMAIL_FROM, [email],
+			  html_message='<a href="http://127.0.0.1:8000/user/active/%s/">http://127.0.0.1:8000/user/active/</a>' % token)
 
-	send_active_email.delay(token, username, email) # 实现异步
+	# send_active_email.delay(token, username, email) # 实现异步
 
 	#注册完毕，返回注册页面
 	return redirect(reverse('books:index'))
@@ -75,20 +76,31 @@ def login_check(request):
 	password = request.POST.get('password')
 	#remember-记住用户名
 	remember = request.POST.get('remember')
+	verifycode = request.POST.get('verifycode') # 请求获取验证码
 
 	#2.数据校验
-	if not all([username,password]):
+	if not all([username,password,verifycode]):
+	# if not all([username, password,]):
 		#有数据为空－返回２
-		return JsonResponse({'res':2})
+		return JsonResponse({'res': 2})
+
+	# upper()方法将字符串中的小写字母转为大写字母
+	# 判断如果获取的验证码不是大写的字符串，就返回有数据为空
+	if verifycode != request.session.get('verifycode'):
+		return JsonResponse({'res': 2})
+
 
 	#3.进行处理:根据用户名和密码查找账户信息
-	passport = Passport.objects.get_one_passport(username=username,password=password)
+	passport=Passport.objects.get_one_passport(username=username,password=password)
 	if passport:
 		#用户名密码正确
 		#获取session中的url_path
 		#根据反向解析
-		next_url = request.session.get('url_path',reverse('books:index'))
+		# next_url = request.session.get('url_path',reverse('books:index'))
+		next_url = reverse('books:index')
 		jres = JsonResponse({'res':1,'next_url':next_url})
+
+
 		#判断是否需要记住用户
 		if remember == 'true':
 			#记住用户
@@ -124,7 +136,23 @@ def user(request):
 	#获取默认的地址　（字段账户的id=服务段传的账户id）
 	addr = Address.objects.get_default_address(passport_id=passport_id)
 
+
+	# todo 这是实现的是用户中心浏览的信息
+	#获取用户的最近浏览信息
+	con = get_redis_connection('default') #　连接redis数据库
+	print('con',con)
+	key = 'history_%d' % passport_id
+
+	#取出用户最近浏览的５个商品的id
+	history_li = con.lrange(key, 0, 4) # lrange()查看插入的数据,使用下标
+	print('history_li',history_li)
+
 	books_li = []
+	print('books_li',books_li)
+	for id in history_li:
+		books = Books.objects.get_books_by_id(books_id=id)
+		books_li.append(books)
+
 	context = {
 		'addr':addr, #地址
 		'page':'user', #用户名
@@ -203,6 +231,129 @@ def address(request):
 
 		#4.返回应答
 		return redirect(reverse('user:address'))
+
+
+#实现用户激活的功能
+def register_active(request,token):
+	#用户账户激活
+	serializer = Serializer(settings.SECRET_KEY,3600)
+	try:
+		info = serializer.loads(token)
+		passport_id = info['confirm']
+		#进行用户激活
+		passport = Passport.objects.get(id=passport_id)
+		passport.is_active = True
+		passport.save()
+		#跳转的登陆页
+		return redirect(reverse('user:login'))
+	except SignatureExpired:
+		#链接过期
+		return HttpResponse('激活链接已过期')
+
+#
+#
+# # 实现登陆验证码的功能
+# def verifycode(request):
+# 	#引入绘图模块
+# 	from PIL import Image,ImageDraw,ImageFont
+# 	#引入随机函数模块
+# 	import random
+# 	#定义变量，用于画面的背景色,宽,高
+# 	#randrange()随机偶数
+# 	bgcolor = (random.randrange(20,100),random.randrange(20,100),255)
+# 	width = 100
+# 	height = 25
+# 	#创建画面对象
+# 	im = Image.new('RGB',(width,height),bgcolor)
+# 	#创建画笔对象
+# 	draw = ImageDraw.Draw(im)
+# 	#调用画笔的point()函数绘制噪点
+# 	for i in range(0,100):
+# 		xy = (random.randrange(0,width),random.randrange(0,height))
+# 		fill = (random.randrange(0,255),255,random.randrange(0,255))
+# 		draw.point(xy,fill=fill)
+# 	#定义验证码的备选值
+# 	str1 = 'ABCD123EFGHIJK456LMNOPQRS789TUVWXYZ0'
+# 	#随机选取４个值作为验证码
+# 	rand_str = ''
+# 	for i in range(0,4):
+# 		rand_str += str1[random.randrange(0,len(str1))]
+# 	#构造字体对象
+# 	font = ImageFont.truetype('/usr/share/fonts/truetype/liberation/LiberationSerif-Italic.ttf',15)
+# 	#构造字体颜色
+# 	fontcolor = (255,random.randrange(0,255),random.randrange(0,255))
+# 	#绘制４个字
+# 	draw.text((5,2),rand_str[0],font=font,fill=fontcolor)
+# 	draw.text((25,2),rand_str[1],font=font,fill=fontcolor)
+# 	draw.text((50,2),rand_str[2],font=font,fill=fontcolor)
+# 	draw.text((75,2),rand_str=[3],font=font,fill=fontcolor)
+# 	#释放画笔
+# 	del draw
+# 	#存入session,用于做进一步验证
+# 	# verifycode - 验证码
+# 	request.session['verifycode'] = rand_str
+# 	#内存文件操作
+# 	import io
+# 	buf = io.BytesIO
+# 	#将图片保存在内存中，文件类型为png
+# 	im.save(buf,'png')
+# 	#将内存中的图片数据返回给客户端，MIME类型为图片png
+# 	return HttpResponse(buf.getvalue(),'image/png')
+
+
+
+from django.http import HttpResponse
+def verifycode(request):
+	#引入绘图模块
+	from PIL import Image, ImageDraw, ImageFont
+	#引入随机函数模块
+	import random
+	#定义变量，用于画面的背景色、宽、高
+	bgcolor = (random.randrange(20, 100), random.randrange(
+		20, 100), 255)
+	width = 100
+	height = 25
+	#创建画面对象
+	im = Image.new('RGB', (width, height), bgcolor)
+	#创建画笔对象
+	draw = ImageDraw.Draw(im)
+	#调用画笔的point()函数绘制噪点
+	for i in range(0, 100):
+		xy = (random.randrange(0, width), random.randrange(0, height))
+		fill = (random.randrange(0, 255), 255, random.randrange(0, 255))
+		draw.point(xy, fill=fill)
+	#定义验证码的备选值
+	str1 = 'ABCD123EFGHIJK456LMNOPQRS789TUVWXYZ0'
+	#随机选取4个值作为验证码
+	rand_str = ''
+	for i in range(0, 4):
+		rand_str += str1[random.randrange(0, len(str1))]
+	#构造字体对象
+	font = ImageFont.truetype('/usr/share/fonts/truetype/liberation/LiberationSerif-Italic.ttf', 15)
+	#构造字体颜色
+	fontcolor = (255, random.randrange(0, 255), random.randrange(0, 255))
+	#绘制4个字
+	draw.text((5, 2), rand_str[0], font=font, fill=fontcolor)
+	draw.text((25, 2), rand_str[1], font=font, fill=fontcolor)
+	draw.text((50, 2), rand_str[2], font=font, fill=fontcolor)
+	draw.text((75, 2), rand_str[3], font=font, fill=fontcolor)
+	#释放画笔
+	del draw
+	#存入session，用于做进一步验证
+	request.session['verifycode'] = rand_str
+	#内存文件操作
+	import io
+	buf = io.BytesIO()
+	#将图片保存在内存中，文件类型为png
+	im.save(buf, 'png')
+	#将内存中的图片数据返回给客户端，MIME类型为图片png
+	return HttpResponse(buf.getvalue(), 'image/png')
+
+
+
+
+
+
 
 
 

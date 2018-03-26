@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %}尚硅谷书店－首页{% endblock title %}
+<!-- 自定义的过滤器，使订单页面的支付状态由数字显示为字符串 -->
+{% load filters %}
+{% block title %}尚硅谷书店－用户中心{% endblock title %}
 {% block topfiles %}{% endblock topfiles %}
 
 {% block body %}
@@ -25,7 +27,9 @@
 				<ul class="order_list_th w978 clearfix">
 					<li class="col01">{{ order.create_time }}</li>
 					<li class="col02">订单号:{{ order.order_id }}</li>
-					<li class="col02 stress">{{ order.status }}</li>
+					<!-- 在这里使用过滤器，使订单的状态数字型的，显示为字符串，
+					对应filters.py文件里自定义的函数 -->
+					<li class="col02 stress">{{ order.status|order_status }}</li>
 				</ul>
 
 				<table class="order_list_table w980">
@@ -43,7 +47,9 @@
                                 {% endfor %}
 							</td>
 							<td width="15%">{{ order.total_price }}元</td>
-							<td width="15%">{{ order.status }}</td>
+							<!-- 在这里使用过滤器，注意过滤器｜两边没有空格 -->
+							<td width="15%">{{ order.status|order_status }}</td>
+
 							<td width="15%"><a href="#" pay_method="{{ order.pay_method }}" order_id="{{ order.order_id }}" order_status="{{ order.status }}" class="oper_btn">去付款</a></td>
 						</tr>
 					</tbody>

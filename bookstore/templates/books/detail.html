@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %}尚硅谷书店-首页{% endblock title %}
+{% block title %}尚硅谷书店-详情页{% endblock title %}
+
 
 {% block topfiles %}
     {# 将商品添加到购物车中去(实现+/-商品数量的功能) #}
@@ -64,8 +65,6 @@
     </script>
 {% endblock topfiles %}
 
-
-
 {% block body %}
 
     <div class="navbar_con">
@@ -123,7 +122,18 @@
                 {% csrf_token %}
 				<a href="javascript:;" class="buy_btn">立即购买</a>
 				<a href="javascript:;" books_id="{{ books.id }}" class="add_cart" id="add_cart">加入购物车</a>
+                <a href="#" id="write-comment" class="comment">我要写评论</a>
 			</div>
+            <div style="display: flex;" id="comment-input" data-bookid="{{ books.id }}" data-userid="{{ request.session.passport_id }}">
+                <div>
+                    <input type="text" placeholder="评论内容">
+                </div>
+                <div id="submit-comment">
+                    <button>
+                        提交评论
+                    </button>
+                </div>
+            </div>
 		</div>
 	</div>
 
@@ -145,8 +155,8 @@
 
 		<div class="r_wrap fr clearfix">
 			<ul class="detail_tab clearfix">
-				<li class="active">商品介绍</li>
-				<li>评论</li>
+				<li class="active" id="detail">商品介绍</li>
+				<li id="comment">评论</li>
 			</ul>
 
 			<div class="tab_content">
@@ -162,50 +172,127 @@
 {% endblock body %}
 
 {% block bottomfiles %}
-    {#　实现向购物车添加数据时的动画效果等... #}
-	<script type="text/javascript">
-		var $add_x = $('#add_cart').offset().top;
-		var $add_y = $('#add_cart').offset().left;
+{#　实现向购物车添加数据时的动画效果等... #}
+<script type="text/javascript">
+    var $add_x = $('#add_cart').offset().top;
+    var $add_y = $('#add_cart').offset().left;
 
-		var $to_x = $('#show_count').offset().top;
-		var $to_y = $('#show_count').offset().left;
+    var $to_x = $('#show_count').offset().top;
+    var $to_y = $('#show_count').offset().left;
 
-		$('#add_cart').click(function(){
-		    //获取商品的id和商品数量
-            books_id = $(this).attr('books_id')
-            console.log(books_id)
-            books_count = $('.num_show').val()
-            console.log(books_count)
-            csrf = $("input[name='csrfmiddlewaretoken']").val()
-            //发起请求，访问/cart/add/,进行购物车数据的添加
-            params = {
-                'books_id': books_id,
-                'books_count': books_count,
-                'csrfmiddlewaretoken': csrf
+    $('#add_cart').click(function(){
+        //获取商品的id和商品数量
+        books_id = $(this).attr('books_id')
+        console.log(books_id)
+        books_count = $('.num_show').val()
+        console.log(books_count)
+        csrf = $("input[name='csrfmiddlewaretoken']").val()
+        //发起请求，访问/cart/add/,进行购物车数据的添加
+        params = {
+            'books_id': books_id,
+            'books_count': books_count,
+            'csrfmiddlewaretoken': csrf
+        }
+        $.post('/cart/add/',params,function (data) {
+            if (data.res == 5) {
+                //添加成功
+                $('.add_jump').css({'left': $add_y + 80, 'top': $add_x + 10, 'display': 'block'})
+                $('.add_jump').stop().animate({
+                        'left': $to_y + 7,
+                        'top': $to_x + 7},
+                    'fast', function () {
+                        $('.add_jump').fadeOut('fast', function () {
+                            //获取原有的show_count的值
+                            count = $('#show_count').html()
+                            count = parseInt(count) + parseInt(books_count)
+                            $('#show_count').html(count);
+                        });
+                });
+
             }
-            $.post('/cart/add/',params,function (data) {
-                if (data.res == 5) {
-                    //添加成功
-                    $('.add_jump').css({'left': $add_y + 80, 'top': $add_x + 10, 'display': 'block'})
-                    $('.add_jump').stop().animate({
-                            'left': $to_y + 7,
-                            'top': $to_x + 7},
-                        'fast', function () {
-                            $('.add_jump').fadeOut('fast', function () {
-                                //获取原有的show_count的值
-                                count = $('#show_count').html()
-                                count = parseInt(count) + parseInt(books_count)
-                                $('#show_count').html(count);
-                            });
-                    });
+            else {
+                //添加失败
+                alert(data.errmsg)
+            }
 
-                }
-                else {
-                    //添加失败
-                    alert(data.errmsg)
-                }
-
-            })
         })
-	</script>
+    })
+
+
+// 获取评论
+$.ajax({
+    url: '/comment/comment/' + $("#comment-input").data('bookid'),
+    success: function (res) {
+        if (res.code === 200){
+            var data = res.data;
+            var div_head = '<div>';
+            var div_tail = '</div>';
+            var dom_element = ''
+            for(i = 0; i < data.length; i++){
+                var head = '<div>';
+                var tail = '</div>';
+                var temp = head + '<span>' + '<br>' + '<span>' + data[i].content + '</span>';
+                dom_element += temp;
+            }
+            dom_element = div_head + dom_element + div_tail;
+            $('#book_comment').append(dom_element);
+        }
+    }
+})
+
+$('#detail').click(function () {
+    $(this).addClass('active');
+    $('#comment').removeClass('active');
+    $('#book_comment').hide();
+    $('#book_detail').show();
+})
+$("#comment").click(function () {
+    $(this).addClass('active');
+    $('#detail').removeClass('active');
+    $('#book_comment').show();
+    $('#book_detail').hide();
+})
+$('#write-comment').click(function () {
+    $('#comment-input').show();
+})
+$('#submit-comment').click(function () {
+    var book_id = $('#comment-input').data('bookid');
+    var user_id = $('#comment-input').data('userid');
+    var content = $('#comment-input .input').val();
+    var data = {
+        book_id: book_id,
+        user_id: user_id,
+        content: content,
+    }
+    $.ajax({
+        type: 'POST',
+        url: '/comment/comment/' + book_id + '/',
+        data: JSON.stringify(data),
+        success: function (res) {
+            if (res.code === 200) {
+                $("#comment-input").hide();
+            }
+        }
+    })
+})
+
+</script>
+
+{# 评论的样式内容 #}
+<style type="text/css">
+    .comment {
+        background-color: #c40000;
+        color: #fff;
+        margin-left: 10px;
+        position: relative;
+        z-index: 10;
+        display: inline-block;
+        width: 178px;
+        height: 38px;
+        border: 1px solid #c40000;
+        font-size: 14px;
+        line-height: 38px;
+        text-align: center;
+    }
+</style>
 {% endblock bottomfiles %}
