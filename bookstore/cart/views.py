@@ -167,7 +167,7 @@ def cart_update(request):
 		return JsonResponse({'res':2,'errmsg':'商品不存在'})
 
 	try:
-		books_count = int(books_count)#因为接受到的数据不一定是数字类型的，所以要强转一下
+		books_count = int(books_count)#因为接收到的数据不一定是数字类型的，所以要强转一下
 	except Exception as e:
 		return JsonResponse({'res':3,'errmsg':'商品数目必须为数字'})
 

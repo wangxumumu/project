@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %}尚硅谷书城－书籍搜索结果列表{% endblock title %}
+{% block title %}木木书城－书籍搜索结果列表{% endblock title %}
 {% block body %}
     <div class="breadcrumb">
         <a href="#">{{ query }}</a>
@@ -19,7 +19,7 @@
                     <div class="operate">
                         <span class="prize">￥{{ item.object.price }}</span>
                         <span class="unit">{{ item.object.unite }}</span>
-                        <a href="#" class="add_books" title="加入购物车"></a>
+                        <a href="{% url 'user:login' %}" class="add_books" title="加入购物车"></a>
                     </div>
                 </li>
             {% endfor %}

@@ -25,7 +25,7 @@ SECRET_KEY = 'd$zfx21n=7!!u#h4(xu(=0tqrhl4s=jnnf859$_)@7@v5szy-q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -88,8 +88,8 @@ DATABASES = {
         'NAME': 'bookstore',
         'HOST': 'localhost',
         'PORT': 3306,
-        'USER': 'atguigu',
-        'PASSWORD': '123456'
+        'USER': 'root',
+        'PASSWORD': 'yzwwxyhf20150322'
     }
 }
 
